@@ -15,7 +15,7 @@ const Header = () => {
     useEffect(() => {
         const fetchMenuItems = async () => {
             try {
-                const response = await axios.get('http://122.160.55.196:4344/matrixtraining/wp-json/menus/v1/menus/18');
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/menus/v1/menus/${process.env.NEXT_PUBLIC_MENU_ID}`);
                 const parseMenuItems = items => {
                     return items.map(item => {
                         const urlParts = item.url.split('/');
@@ -42,7 +42,7 @@ const Header = () => {
 
         const fetchLogo = async () => {
             try {
-                const response = await axios.get('http://122.160.55.196:4344/matrixtraining/wp-json/wp/v2/media?search=logo');
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/wp/v2/media?search=logo`);
                 if (response.data.length > 0 && response.data[0].source_url) {
                     setLogoUrl(response.data[0].source_url);
                 }
@@ -53,7 +53,7 @@ const Header = () => {
 
         const fetchWidgets = async () => {
             try {
-                const response = await axios.get('http://122.160.55.196:4344/matrixtraining/wp-json/wp/v2/widgets');
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/wp/v2/widgets`);
                 setWidgets(response.data);
             } catch (error) {
                 console.error('Error fetching widgets:', error);
