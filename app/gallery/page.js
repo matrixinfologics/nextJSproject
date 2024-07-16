@@ -1,16 +1,17 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import Header from '../lib/Header'; // Import the Header component
+import Footer from '../lib/Footer'; // Import the Header component
 import { fetchPageData } from '../lib/api';
 import Slider from 'react-slick';
 import parse from 'html-react-parser';
-import Header from '../lib/Header'; // Import the Header component
-import Footer from '../lib/Footer'; // Import the Header component
-import Image from 'next/image';
 import FeaturedPost from '../lib/FeaturedPost'; // Adjust the path as necessary
+import Image from 'next/image';
 
 
-const About = () => {
+
+const Gallery = () => {
   const [content, setContent] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -20,7 +21,7 @@ const About = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchPageData('about-us');
+        const data = await fetchPageData('gallery');
         setContent(data);
       } catch (error) {
         setError(error.message);
@@ -81,7 +82,7 @@ const About = () => {
                               {parse(block._multiple_text_block._description)}
                             </div>
                         )}
-                        {block._heading_two && (
+                        {block._multiple_text_block && (
                             <div className="middenSection row">
                                 <div className="textarea col-md-6">
                                     <h2>{block._multiple_text_block._heading_two}</h2>
@@ -92,7 +93,7 @@ const About = () => {
                                 </div>
                             </div>
                         )}
-                        {block._heading_three && (
+                        {block._multiple_text_block && (
                             <div className="bottomSection">
                                 <h2>{block._multiple_text_block._heading_three}</h2>
                                 {parse(block._multiple_text_block._description_three)}
@@ -309,4 +310,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Gallery;

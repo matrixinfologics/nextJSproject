@@ -20,7 +20,7 @@ const About = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchPageData('about-us');
+        const data = await fetchPageData('php');
         setContent(data);
       } catch (error) {
         setError(error.message);
