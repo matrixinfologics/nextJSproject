@@ -2,8 +2,8 @@
 
 import axios from 'axios';
 
-const BASE_PAGE_URL = 'http://122.160.55.196:4344/matrixtraining/wp-json/wp/v2/pages';
-const BASE_POST_URL = 'http://122.160.55.196:4344/matrixtraining/wp-json/wp/v2/posts';
+const BASE_PAGE_URL = process.env.NEXT_PUBLIC_BASE_PAGE_URL;
+const BASE_POST_URL = process.env.NEXT_PUBLIC_BASE_POST_URL;
 
 export const fetchPageData = async (slug) => {
   try {

@@ -37,7 +37,7 @@ const Home = () => {
     return title.toLowerCase().replace(/[^a-z0-9]/g, '_');
   };
 
-  if (loading) return <div className="loader"><Image src="http://122.160.55.196:4344/matrixtraining/wp-content/uploads/2024/05/cupertino_activity_indicator_square_medium.gif" alt="Loading" width={100} height={100} /></div>;
+  if (loading) return <div className="loader"><Image src={process.env.NEXT_PUBLIC_LOADER_URL} alt="Loading" width={100} height={100} /></div>;
   if (error) return <p>Error: {error}</p>;
 
   const images = []; // Collect images for lightbox

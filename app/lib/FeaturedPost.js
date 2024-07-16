@@ -4,13 +4,12 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import Image from 'next/image';
 
-
 const FeaturedPost = () => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
         // Fetch posts using Axios
-        axios.get('http://122.160.55.196:4344/matrixtraining/wp-json/wp/v2/posts', {
+        axios.get(`${process.env.NEXT_PUBLIC_BASE_POST_URL}`, {
             params: {
                 per_page: 6,
                 _embed: true

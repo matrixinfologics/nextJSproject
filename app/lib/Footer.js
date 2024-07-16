@@ -7,7 +7,7 @@ const Footer = () => {
   useEffect(() => {
     const fetchWidgets = async () => {
       try {
-        const response = await axios.get('http://122.160.55.196:4344/matrixtraining/wp-json/wp/v2/widgets');
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_BASE_WIDGETS_URL}`);
         setWidgets(response.data);
       } catch (error) {
         console.error('Error fetching widgets:', error);
